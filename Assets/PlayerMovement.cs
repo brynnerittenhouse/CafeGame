@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseController.isPaused)
+        {
+            body.linearVelocity = Vector2.zero;
+            return;
+        }
         body.linearVelocity = new Vector2(moveInput.x * speed, moveInput.y * speed);
     }
 
